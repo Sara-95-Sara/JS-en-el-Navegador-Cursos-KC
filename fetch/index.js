@@ -2,8 +2,9 @@
    // obtener lista de todos
    // pintar todos los resultados en la pantalla (en el DOM).
 
-const todosListElement = document.querySelector('.todos-list');
+// const todosListElement = document.querySelector('.todos-list');
 
+/*
 // fetch es un metodo que nos da el navegador.  built in- ներկառուցված.
 // obtener datos del proveedor
 fetch('https://jsonplaceholder.typicode.com/todos')
@@ -21,7 +22,7 @@ fetch('https://jsonplaceholder.typicode.com/todos')
           todosListElement.appendChild(listItemElement);
         });
     });
-
+*/
    /* 
    {
     "userId": 1,
@@ -33,6 +34,53 @@ fetch('https://jsonplaceholder.typicode.com/todos')
 
 
 
+/*
+// Ejercicio 1..   opcion Declarativa
+const todosListElement = document.querySelector('.todos-list'); 
+
+function buttonClicked() {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(response => response.json())
+    .then(todos => {
+        // recorrer el array de todos
+        todos.forEach(todo => {
+          // por cada elemento, creamos un li
+          const listItemElement = document.createElement("li");
+
+          // lo rellenamos con los datos que queramos
+          listItemElement.innerText =  `${todo.title} - ${todo.completed}`;
+        
+          // lo añadiremos a la lista
+          todosListElement.appendChild(listItemElement);
+        });
+    });
+    console.log("amnmjsn");
+}
+*/
+
+
+// ejercicio 1.. opcion Imperativa
+const todosListElement = document.querySelector('.todos-list');
+const mostrarDatos = document.querySelector("#mostrarDatos");
+
+
+mostrarDatos.addEventListener("click", async () => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(response => response.json())
+    .then(todos => {
+        // recorrer el array de todos
+        todos.forEach(todo => {
+          // por cada elemento, creamos un li
+          const listItemElement = document.createElement("li");
+
+          // lo rellenamos con los datos que queramos
+          listItemElement.innerText =  `${todo.title} - ${todo.completed}`;
+        
+          // lo añadiremos a la lista
+          todosListElement.appendChild(listItemElement);
+        });
+    });
+});
 
 
 
