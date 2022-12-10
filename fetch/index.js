@@ -58,13 +58,13 @@ function buttonClicked() {
 }
 */
 
-
+/*
 // ejercicio 1.. opcion Imperativa
 const todosListElement = document.querySelector('.todos-list');
 const mostrarDatos = document.querySelector("#mostrarDatos");
 
 
-mostrarDatos.addEventListener("click", async () => {
+mostrarDatos.addEventListener("click", () => {
     fetch('https://jsonplaceholder.typicode.com/todos')
     .then(response => response.json())
     .then(todos => {
@@ -81,6 +81,35 @@ mostrarDatos.addEventListener("click", async () => {
         });
     });
 });
+*/
+
+// Ej. 1 con Async Await (Imperativa)
+const todosListElement = document.querySelector('.todos-list');
+const mostrarDatos = document.querySelector("#mostrarDatos");
+
+mostrarDatos.addEventListener("click", showElementUsingAsyncAwait);
+
+
+async function showElementUsingAsyncAwait () {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+    const todos = await response.json();
+
+    // recorrer el array de todos
+    todos.forEach(todo => {
+        // por cada elemento, creamos un li
+        const listItemElement = document.createElement("li");
+
+        // lo rellenamos con los datos que queramos
+        listItemElement.innerText =  `${todo.title} - ${todo.completed}`;
+      
+        // lo añadiremos a la lista
+        todosListElement.appendChild(listItemElement);
+    });
+    mostrarDatos.remove();
+}
+
+
+
 
 
 
