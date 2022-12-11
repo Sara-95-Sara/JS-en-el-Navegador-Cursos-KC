@@ -1,0 +1,15 @@
+.tweet-list {
+    min-width: 360px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .tweet-list article {
+    border: solid 1px lightgray;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  
+  .tweet-list article + article {
+    margin-top: 2rem;
+  }
